@@ -22,3 +22,4 @@ To this mesh
 * [OpenCV](https://pypi.python.org/pypi/opencv-python)
 * [OpenCV Contrib](https://pypi.python.org/pypi/opencv-contrib-python)
 * [Pillow](https://pypi.python.org/pypi/Pillow/)
+* [numba](https://numba.pydata.org/)
