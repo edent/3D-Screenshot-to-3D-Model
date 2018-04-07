@@ -6,37 +6,33 @@ import argparse
 
 from pyntcloud import PyntCloud   # https://github.com/daavoo/pyntcloud
 from PIL import Image
-from sklearn.preprocessing import normalize
 
 def generate_mesh(filename):
     #   # Open an image as RGB
     print("Opening " + filename)
     original = Image.open(filename).convert('RGB')
     
-    #   # Get the dimensions
+    #   # Get the dimensions of the image
     width, height = original.size
     
-    #   # Split into left and right halves
+    #   # Split into left and right halves.  The left eye sees the right image.
     right  = original.crop( (0,       0, width/2, height))
     left   = original.crop( (width/2, 0, width,   height))
-    
-    #   # Optional - Save images
-    # right.save(filename+"-right.png")
-    # left.save(filename+"-left.png")
     
     #   # Convert to arrays
     image_left  = np.array(left) 
     image_right = np.array(right) 
 
     #   # Simple but less effective
-    # stereo = cv2.StereoBM_create(numDisparities=0, blockSize=25)
+    # stereo = cv2.StereoBM_create(numDisparities=32, blockSize=25)
     # disparity = stereo.compute(image_left,image_right)
     # depth_image = Image.fromarray(disparity).convert('L')
 
     #   # Parameters for dispartiy map
     print("Generating Depth Map")
     window_size = 15
-     
+    
+    #   # These values can be tuned depending on the image.
     left_matcher = cv2.StereoSGBM_create(
         #   # Documentation at https://docs.opencv.org/trunk/d2/d85/classcv_1_1StereoSGBM.html
         minDisparity=0,
@@ -71,27 +67,33 @@ def generate_mesh(filename):
     
     #   # Invert image. Optional depending on stereo pair
     depth_map = cv2.bitwise_not(depth_map)
+
     #   # Greyscale
     depth_image = Image.fromarray(depth_map, mode="L")
     #   # Optional - Save Disparity
     # depth_image.save(filename+"-depth.png")
 
-    #   # Get the colour information from the left image - resize to full-width
+    #   # Get the colour information from the left image. Resized to original.  Rotated 90 degrees for STL.
     print("Creating Colour Map")
-    colours_array  = np.array(left.resize(original.size).getdata()).reshape((height, width) + (3,))
+    colours_array  = np.array(left.resize(original.size)
+                                  .rotate(-90, expand=True)
+                                  .getdata()
+                    ).reshape(original.size + (3,))
     
     #   # Create a Pandas DataFrame of each pixel's position and colour
-    indices_array = np.moveaxis(np.indices((height, width)), 0, 2)
+    indices_array = np.moveaxis(np.indices(original.size), 0, 2)
     imageArray    = np.dstack((indices_array, colours_array)).reshape((-1,5))
     df = pd.DataFrame(imageArray, columns=["x", "y", "red","green","blue"])
 
-    #   # Get depth information - resize to full width
-    depths_array = np.array(depth_image.resize(original.size).getdata())
+    #   # Get depth information. Resized to original.  Rotated 90 degrees for STL.
+    depths_array = np.array(depth_image.resize(original.size)
+                                       .rotate(-90, expand=True)
+                                       .getdata())
     
-    #   # Add to DataFrame
+    #   # Add depth to DataFrame
     df.insert(loc=2, column='z', value=depths_array)
     
-    #   # Set unit type correctly
+    #   # Set unit types correctly
     df[['red','green','blue']] = df[['red','green','blue']].astype(np.uint)
     df[['x','y','z']] = df[['x','y','z']].astype(float)
     
