@@ -60,3 +60,4 @@ The screenshots in the `samples` folder fall under the UK's "Fair Dealing" excep
 * [Planet Dinosaur](https://www.imdb.com/title/tt1998816/) is © Jellyfish Pictures
 * [House of Wax](https://www.imdb.com/title/tt0045888/) is © Warner Bros
 * [Kiss Me Kate](http://www.imdb.com/title/tt0045963/) is © MGM
+* LG content from their 3D demo videos
