@@ -15,10 +15,25 @@ From this screenshot:
 To this mesh:
 ![The scheenshot is now in 3D. The fishes float away from the background.](https://user-images.githubusercontent.com/837136/38454786-dd26d8ee-3a65-11e8-94c9-a8b65c27df00.png)
 
+From this screenshot:
+![Screenshot from the short film Paperman. A man stands in front of a post box.](https://raw.githubusercontent.com/edent/3D-Screenshot-to-3D-Model/master/samples/Paperman_1.png)
 
-## Fine tuning
+To this mesh:
+![The scheenshot is now in 3D.](https://user-images.githubusercontent.com/837136/38456341-9e62b2ac-3a7b-11e8-933b-0f9898fbce2b.png)
 
-## Pre-requisits
+From this screenshot:
+
+![Screenshot from the movie Resident Evil: Retribution. People are crammed in a corridor.](https://raw.githubusercontent.com/edent/3D-Screenshot-to-3D-Model/master/samples/Resident_Evil_Retribution_1.png)
+
+To this mesh:
+![The scheenshot is now in 3D.](https://user-images.githubusercontent.com/837136/38456251-90c490a8-3a7a-11e8-81ee-ae16c780bc4e.png)
+
+
+## Requirements
+
+The code runs quickly, even on older hardware. It should take less than a minute to generate a mesh, even on a modest machine.
+
+In order to run the software, you will need:
 
 * Python3
 * [PyntCloud](https://github.com/daavoo/pyntcloud)
