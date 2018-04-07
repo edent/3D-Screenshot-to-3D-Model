@@ -10,7 +10,7 @@ Will output a 3D mesh in PLY format.
 ## Demo
 From this screenshot:
 
-![Screenshot from the movie Finding Nemo. Two fish are swimming in the ocean.](https://raw.githubusercontent.com/edent/3D-Screenshot-to-3D-Model/master/samples/Finding_Nemo_1.png)
+![Screenshot from the movie Finding Nemo. Two fish are swimming in the ocean.](https://raw.githubusercontent.com/edent/3D-Screenshot-to-3D-Model/master/samples/Finding_Nemo_01.png)
 
 To this mesh:
 ![The scheenshot is now in 3D. The fishes float away from the background.](https://user-images.githubusercontent.com/837136/38454786-dd26d8ee-3a65-11e8-94c9-a8b65c27df00.png)
