@@ -22,7 +22,6 @@ To this mesh:
 ![The scheenshot is now in 3D.](https://user-images.githubusercontent.com/837136/38456341-9e62b2ac-3a7b-11e8-933b-0f9898fbce2b.png)
 
 From this screenshot:
-
 ![Screenshot from the movie Resident Evil: Retribution. People are crammed in a corridor.](https://raw.githubusercontent.com/edent/3D-Screenshot-to-3D-Model/master/samples/Resident_Evil_Retribution_1.png)
 
 To this mesh:
@@ -60,3 +59,4 @@ The screenshots in the `samples` folder fall under the UK's "Fair Dealing" excep
 * [Resident Evil: Retribution](https://www.imdb.com/title/tt1855325/) is © Sony Pictures 
 * [Planet Dinosaur](https://www.imdb.com/title/tt1998816/) is © Jellyfish Pictures
 * [House of Wax](https://www.imdb.com/title/tt0045888/) is © Warner Bros
+* [Kiss Me Kate](http://www.imdb.com/title/tt0045963/) is © MGM
