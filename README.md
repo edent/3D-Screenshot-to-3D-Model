@@ -1,4 +1,4 @@
-# 3D Screenshot to 3D-Model
+# 3D Screenshot to 3D Model
 Quick Python script to transform screenshots of 3D movies into a 3D meshes. See https://shkspr.mobi/blog/2018/04/reconstructing-3d-models-from-the-last-jedi for more details.
 
 ## Usage
