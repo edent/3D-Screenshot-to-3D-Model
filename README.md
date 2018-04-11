@@ -5,7 +5,7 @@ Quick Python script to transform screenshots of 3D movies into a 3D meshes. See 
 
 `python3 screenshot_to_mesh.py screenshot.png`
 
-Will output a 3D mesh in PLY format.
+Will output a 3D mesh in PLY format.  Images can be H-SBS (Side-By-Side) or OU (Over-Under).
 
 ## Demo
 From this screenshot:
@@ -14,6 +14,11 @@ From this screenshot:
 
 To this mesh:
 ![The scheenshot is now in 3D. The fishes float away from the background.](https://user-images.githubusercontent.com/837136/38454786-dd26d8ee-3a65-11e8-94c9-a8b65c27df00.png)
+
+![The MGM Lion is roaring](https://raw.githubusercontent.com/edent/3D-Screenshot-to-3D-Model/master/samples/Finding_Nemo_01.png)
+
+To this mesh:
+![The lion is now in 3D.]https://user-images.githubusercontent.com/837136/38632012-55c60482-3db3-11e8-933a-9700be890ac9.png]
 
 From this screenshot:
 ![Screenshot from the short film Paperman. A man stands in front of a post box.](https://raw.githubusercontent.com/edent/3D-Screenshot-to-3D-Model/master/samples/Paperman_1.png)

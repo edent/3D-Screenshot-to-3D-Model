@@ -19,6 +19,27 @@ def generate_mesh(filename):
     right  = original.crop( (0,       0, width/2, height))
     left   = original.crop( (width/2, 0, width,   height))
     
+    
+    #   # Over/Under. Split into top and bottom halves. The right eye sees the top image.
+    top    = original.crop( (0,        0, width, height/2))
+    bottom = original.crop( (0, height/2, width,   height))
+
+    #   # Calculate the similarity of the left/right & top/bottom.
+    left_right_similarity = mse(np.array(right), np.array(left))
+    top_bottom_similarity = mse(np.array(top),   np.array(bottom))
+
+    if (top_bottom_similarity < left_right_similarity):
+        #   # This is an Over/Under image
+        print("Over-Under image detected")
+        left  = bottom
+        right = top
+    else:
+        print("Side-By-Side image detected")
+
+    #   # Optional. Save split images
+    # left.resize(original.size).save(filename + "-left.png")
+    # right.resize(original.size).save(filename + "-right.png")
+    
     #   # Convert to arrays
     image_left  = np.array(left) 
     image_right = np.array(right) 
@@ -71,7 +92,7 @@ def generate_mesh(filename):
     #   # Greyscale
     depth_image = Image.fromarray(depth_map, mode="L")
     #   # Optional - Save Disparity
-    # depth_image.save(filename+"-depth.png")
+    # depth_image.resize(original.size).save(filename+"-depth.png")
 
     #   # Get the colour information from the left image. Resized to original.  Rotated 90 degrees for STL.
     print("Creating Colour Map")
@@ -107,6 +128,18 @@ def generate_mesh(filename):
     #   # Save mesh to file
     print("Saving Mesh")
     cloud.to_file(filename+".ply", also_save=["mesh","points"],as_text=True)
+
+def mse(imageA, imageB):
+    # the 'Mean Squared Error' between the two images is the
+    # sum of the squared difference between the two images;
+    # NOTE: the two images must have the same dimension
+    # From https://www.pyimagesearch.com/2014/09/15/python-compare-two-images/
+    err = np.sum((imageA.astype("float") - imageB.astype("float")) ** 2)
+    err /= float(imageA.shape[0] * imageA.shape[1])
+
+    # return the MSE, the lower the error, the more "similar"
+    # the two images are
+    return err
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
