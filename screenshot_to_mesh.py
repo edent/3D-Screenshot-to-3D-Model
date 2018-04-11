@@ -87,7 +87,8 @@ def generate_mesh(filename):
     depth_map = np.uint8(depth_map)
     
     #   # Invert image. Optional depending on stereo pair
-    depth_map = cv2.bitwise_not(depth_map)
+    if (top_bottom_similarity > left_right_similarity):
+        depth_map = cv2.bitwise_not(depth_map)
 
     #   # Greyscale
     depth_image = Image.fromarray(depth_map, mode="L")
