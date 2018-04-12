@@ -67,3 +67,7 @@ The screenshots in the `samples` folder fall under the UK's "Fair Dealing" excep
 * [Kiss Me Kate](http://www.imdb.com/title/tt0045963/) is © MGM
 * [Amazing Spiderman](http://www.imdb.com/title/tt0948470/) is © Marvel
 * LG content from their 3D demo videos
+
+## More Info
+
+See https://shkspr.mobi/blog/2018/04/reconstructing-3d-models-from-the-last-jedi for more details.
